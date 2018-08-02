@@ -1,0 +1,26 @@
+{
+  "name": "pieceofgrape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "node index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "8.4.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "discord.js": "^11.3.2",
+    "express": "^4.16.3",
+    "htmlparser": "^1.7.7",
+    "jquery": "^1.7.4",
+    "jsdom": "^11.11.0",
+    "request": "^2.87.0",
+    "youtube-search": "^1.1.1"
+  }
+}
