@@ -9,7 +9,7 @@ var cheerio = require('cheerio');
 client.servers = new Enmap({provider: new Provider({name: "server"})});
 client.titles = new Enmap({provider: new Provider({name: "title"})});
 client.on("ready", () => {
-  console.log("Let's go");
+  console.log("Let's go bb");
   client.user.setPresence({ game: { name: '!' }, status: 'idle' });
 });
 client.on("guildCreate", (guild) => {
@@ -155,4 +155,4 @@ client.on("message", (message) => {
 });
   }
   });
-client.login("process.env.BOT_TOKEN");
+client.login("NDc4NjM0NTkxODU5NzY5MzQ1.DlNjYQ.0nbPk2e0kdraqR87RY2JgHywNmc");
