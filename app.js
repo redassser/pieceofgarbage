@@ -9,7 +9,7 @@ var cheerio = require('cheerio');
 client.servers = new Enmap({provider: new Provider({name: "server"})});
 client.titles = new Enmap({provider: new Provider({name: "title"})});
 client.on("ready", () => {
-  console.log("Let's go bb");
+  console.log("Let's go");
   client.user.setPresence({ game: { name: '!' }, status: 'idle' });
 });
 client.on("guildCreate", (guild) => {
