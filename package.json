@@ -2,16 +2,16 @@
   "name": "SCP SL server info",
   "version": "1.0.0",
   "description": "",
-  "main": "node app.js",
+  "main": "node index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "engines": {
     "node": "8.4.0"
   },
   "keywords": [],
-  "author": "Kurva Gaming",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.4.2",
