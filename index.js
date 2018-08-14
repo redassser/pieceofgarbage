@@ -75,6 +75,10 @@ client.on("message", (message) => {
 
   message.channel.send(`\`\`${array.join('\n')}\`\``);
   }
+  //Get all guilds the bot is in
+   if (command === "collection") {
+  message.channel.send(client.guilds.array())
+  }
   //get the server status
   if (client.servers.has(message.guild.id+command)) {
     console.log(client.servers.get(message.guild.id+command));
