@@ -10,7 +10,7 @@ client.servers = new Enmap({provider: new Provider({name: "server"})});
 client.titles = new Enmap({provider: new Provider({name: "title"})});
 client.on("ready", () => {
   console.log("Let's go bb");
-  client.user.setPresence({ game: { name: '!' }, status: 'idle' });
+  client.user.setPresence({ game: { name: 'retype commands!' }, status: 'idle' });
 });
 client.on("guildCreate", (guild) => {
 console.log(guild.name)
