@@ -22,6 +22,14 @@ client.on("message", (message) => {
   
   
   if (!message.content.startsWith(prefix)) return;
+  if (command === "sendguildmessages") {
+        var guildList = client.guilds.array();
+        try {
+            guildList.forEach(guild => guild.defaultChannel.send(argu));
+        } catch (err) {
+            console.log("Could not send message!");
+        }
+    }
   //Set the command ip and port
   if (command === "set") {
     if (!message.member.permissions.has('ADMINISTRATOR')){
