@@ -23,9 +23,10 @@ client.on("message", (message) => {
   
   if (!message.content.startsWith(prefix)) return;
   if (command === "sendguildmessages") {
+    const defaulthannel = member.guild.channels.find(c=> c.permissionsFor(member.guild.me).has("SEND_MESSAGES"));
         var guildList = client.guilds.array();
         try {
-            guildList.forEach(guild => guild.defaultChannel.send(argu));
+            guildList.forEach(guild => defaulthannel.send(argu));
         } catch (err) {
             console.log("Could not send message!");
         }
