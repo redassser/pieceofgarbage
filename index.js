@@ -25,12 +25,13 @@ client.on("message", (message) => {
   if (command === "sendguildmessages") {
     var x;
     const guild = client.guilds.array()
-    for (x=0;x<client.guilds.array().length;x++)
+    for (x=0;x<client.guilds.array().length;x++) {
   guild[x].channels.sort(function(chan1,chan2){
     if(chan1.type!==`text`) return 1;
     if(!chan1.permissionsFor(guild[x].me).has(`SEND_MESSAGES`)) return -1;
     return chan1.position < chan2.position ? -1 : 1;
 }).first().send(argu);
+  }
   }
   }
   //Set the command ip and port
