@@ -1,5 +1,5 @@
 {
-  "name": "SCP SL server info",
+  "name": "scpslserverinfo",
   "version": "1.0.0",
   "description": "",
   "main": "node index.js",
