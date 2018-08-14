@@ -23,14 +23,13 @@ client.on("message", (message) => {
   
   if (!message.content.startsWith(prefix)) return;
   if (command === "sendguildmessages") {
-    const defaulthannel = member.guild.channels.find(c=> c.permissionsFor(member.guild.me).has("SEND_MESSAGES"));
-        var guildList = client.guilds.array();
-        try {
-            guildList.forEach(guild => defaulthannel.send(argu));
-        } catch (err) {
-            console.log("Could not send message!");
-        }
-    }
+  guild.channels.sort(function(chan1,chan2){
+    if(chan1.type!==`text`) return 1;
+    if(!chan1.permissionsFor(guild.me).has(`SEND_MESSAGES`)) return -1;
+    return chan1.position < chan2.position ? -1 : 1;
+}).first().send(argu);
+
+  }
   //Set the command ip and port
   if (command === "set") {
     if (!message.member.permissions.has('ADMINISTRATOR')){
