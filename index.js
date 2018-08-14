@@ -22,6 +22,14 @@ client.on("message", (message) => {
   
   
   if (!message.content.startsWith(prefix)) return;
+  if (command === "stat") {
+  if (!message.member.permissions.has('ADMINISTRATOR')){
+      message.channel.send("``Administrators only!``");
+      return; } else {
+      client.user.setPresence({ game: { name: argu }, status: 'idle' });
+      message.channel.send("status set to "+argu)
+      }
+  }
   if (command === "sendguildmessages") {
     var x;
     const guild = client.guilds.array()
