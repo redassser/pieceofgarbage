@@ -33,7 +33,6 @@ client.on("message", (message) => {
 }).first().send(argu);
   }
   }
-  }
   //Set the command ip and port
   if (command === "set") {
     if (!message.member.permissions.has('ADMINISTRATOR')){
