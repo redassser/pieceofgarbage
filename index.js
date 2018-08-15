@@ -13,8 +13,8 @@ client.servers = new Enmap({ provider: new EnmapMongo({
 })
 })
 client.titles = new Enmap({ provider: new EnmapMongo({
-  name: `scpsltitles`,
-  dbName: `scpsltitles`,
+  name: `scpsltitle`,
+  dbName: `scpsltitle`,
   url: process.env.MONGOLAB_URI2
 })
 })
