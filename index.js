@@ -99,10 +99,11 @@ client.on("message", (message) => {
   message.channel.send(client.guilds.array())
   }
   //serverhelp
+  if (command === "serverhelp") {
    message.author.send({"embed": {
     "color": 2314137,
     timestamp: new Date(),
-    "title": `Server Info Bot Documentation,
+    "title": `Server Info Bot Documentation`,
     "description": "This part of the bot can be used to input your own server into the bot and then have it display the status of your server(s). It will display: ip, port, player count, server status. One can easily add multiple servers to the bot and can also remove them if needed.",
     "url": "https://tinyurl.com/scpserverbot",
     "footer": "For assistance or to report a bug, message roxyyy136#1012 or PieFace#5319",
@@ -126,6 +127,7 @@ client.on("message", (message) => {
           ],
       }
      }); 
+}
   //get the server status
   if (client.servers.has(message.guild.id+command)) {
     console.log(client.servers.get(message.guild.id+command));
