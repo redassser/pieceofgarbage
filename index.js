@@ -1,15 +1,11 @@
 const express = require('express');
 const Enmap = require('enmap');
-const Provider = require("enmap-sqlite");
+const Provider = require("enmap-mongo");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = "!";
 const request = require('request');
 var cheerio = require('cheerio');
-const level = new EnmapSQLite({ 
-  name: "test",
-  dataDir: './data'
-});
 client.servers = new Enmap({provider: new Provider({name: "server"})});
 client.titles = new Enmap({provider: new Provider({name: "title"})});
 client.on("ready", () => {
