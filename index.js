@@ -8,6 +8,12 @@ const request = require('request');
 var cheerio = require('cheerio');
 client.servers = new Enmap({provider: new Provider({name: "server"})});
 client.titles = new Enmap({provider: new Provider({name: "title"})});
+client.servers = new Enmap({ provider: new EnmapMongo({
+  name: `server`,
+  dbName: `scpslinfo`,
+  url: process.env.MONGODB_URI
+})
+})
 client.on("ready", () => {
   console.log("Let's go bb");
   client.user.setPresence({ game: { name: 'retype commands!' }, status: 'idle' });
