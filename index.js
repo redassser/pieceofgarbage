@@ -12,6 +12,12 @@ client.servers = new Enmap({ provider: new EnmapMongo({
   url: process.env.MONGOLAB_URI
 })
 })
+client.titles = new Enmap({ provider: new EnmapMongo({
+  name: `scpsltitles`,
+  dbName: `scpsltitles`,
+  url: process.env.MONGOLAB_URI2
+})
+})
 client.on("ready", () => {
   console.log("Let's go bb");
   client.user.setPresence({ game: { name: 'retype commands!' }, status: 'idle' });
