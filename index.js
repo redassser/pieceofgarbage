@@ -1,6 +1,7 @@
 const express = require('express');
 const Enmap = require('enmap');
-const Provider = require("enmap-mongo");
+const EnmapMongo = require("enmap-mongo");
+const Provider = require("enmap-sqlite");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = "!";
