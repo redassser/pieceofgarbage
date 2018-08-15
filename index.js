@@ -103,13 +103,13 @@ client.on("message", (message) => {
    message.author.send({"embed": {
     "color": 2314137,
     timestamp: new Date(),
-    "title": `Server Info Bot Documentation`,
+    "title": "Server Info Bot Documentation",
     "description": "This part of the bot can be used to input your own server into the bot and then have it display the status of your server(s). It will display: ip, port, player count, server status. One can easily add multiple servers to the bot and can also remove them if needed.",
     "url": "https://tinyurl.com/scpserverbot",
     "footer": "For assistance or to report a bug, message roxyyy136#1012 or PieFace#5319",
         fields: [{
           name: "**!set [commandname] [serverip] [serverport]**",
-          value: "Will set the name of the command, ip, and port. For EX. ``!set ss1 192.223.31.157 7778`` would make the bot display the info on the server with the ip 192.223.31.157 and port 7778 every time someone says ``!ss1``"
+          value: 'Will set the name of the command, ip, and port. For EX. ``!set ss1 192.223.31.157 7778`` would make the bot display the info on the server with the ip 192.223.31.157 and port 7778 every time someone says ``!ss1``'
         },
         {
           name: “**!del [commandname]**”,
