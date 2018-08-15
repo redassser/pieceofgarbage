@@ -1,13 +1,11 @@
 const express = require('express');
 const Enmap = require('enmap');
 const EnmapMongo = require("enmap-mongo");
-const Provider = require("enmap-sqlite");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = "!";
 const request = require('request');
 var cheerio = require('cheerio');
-client.titles = new Enmap({provider: new Provider({name: "title"})});
 client.servers = new Enmap({ provider: new EnmapMongo({
   name: `scpslinfo`,
   dbName: `scpslinfo`,
