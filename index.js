@@ -105,23 +105,23 @@ client.on("message", (message) => {
     timestamp: new Date(),
     "title": "Server Info Bot Documentation",
     "description": "This part of the bot can be used to input your own server into the bot and then have it display the status of your server(s). It will display: ip, port, player count, server status. One can easily add multiple servers to the bot and can also remove them if needed.",
-    "url": "https://tinyurl.com/scpserverbot",
+    "url": "https:\/\/tinyurl.com\/scpserverbot",
     "footer": "For assistance or to report a bug, message roxyyy136#1012 or PieFace#5319",
         fields: [{
           name: "**!set [commandname] [serverip] [serverport]**",
-          value: 'Will set the name of the command, ip, and port. For EX. ``!set ss1 192.223.31.157 7778`` would make the bot display the info on the server with the ip 192.223.31.157 and port 7778 every time someone says ``!ss1``'
+          value: "Will set the name of the command, ip, and port. For EX. ``!set ss1 192.223.31.157 7778`` would make the bot display the info on the server with the ip 192.223.31.157 and port 7778 every time someone says \`\`!ss1\`\`"
         },
         {
-          name: “**!del [commandname]**”,
+          name: "**!del [commandname]**”,
           value: "Deletes the specified command. For EX. ``!del ss1`` would delete the server command ``!ss1``."
 
         },
         {
-          name: “**!title [commandname] [title]**” ,
-          value: "Sets the title for the servers info card. For EX. ``!title ss1 Server 1`` would make the title of the info card be ``'Server 1'``." 
+          name: "**!title [commandname] [title]**”,
+          value: "Sets the title for the servers info card. For EX. ``!title ss1 Server 1`` would make the title of the info card be ``Server 1``." 
         },
         {
-          name: “***Notes***”,
+          name: "***Notes***”,
           value: "If you input the wrong ip or port the bot will show the server as offline. If the port on the server changes it will be shown as offline unless you update the port. To run the setup commands you must have the administrator permission."
         }
           ],
