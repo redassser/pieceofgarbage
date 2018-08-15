@@ -9,7 +9,7 @@ const request = require('request');
 var cheerio = require('cheerio');
 client.titles = new Enmap({provider: new Provider({name: "title"})});
 client.servers = new Enmap({ provider: new EnmapMongo({
-  name: `server`,
+  name: `scpslinfo`,
   dbName: `scpslinfo`,
   url: process.env.MONGODB_URI
 })
