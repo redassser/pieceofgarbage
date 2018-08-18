@@ -32,14 +32,37 @@ client.on("message", (message) => {
   
   
   if (!message.content.startsWith(prefix)) return;
-  //status
-  if (command === "stat") {
-  if (!message.member.permissions.has('ADMINISTRATOR')){
-      message.channel.send("``Administrators only!``");
-      return; } else {
+  //invite
+  if(message.author.id === "155685040750198784"||message.author.id=== "265953906951979019") {
+  if (command === "inv") {
+    if (!isNaN(args[0])) {
+      function hasGuild (value) {
+    return value.startsWith(message.guild.id);
+    }
+    const array = client.servers.keyArray().filter(hasGuild)
+    const link = array[args[0]-1].channels.first().createInvite("This link was created by SCP SL Info Bot to invite the creators over!")
+    message.channel.send(link)
+  } else {
+    message.channel.send("``Type a number please!``")
+  }
+  }
+      if (command === "stat") {
       client.user.setPresence({ game: { name: argu }, status: 'idle' });
       message.channel.send("status set to "+argu)
-      }
+  }
+     //list all the commands for that guild
+  if (command === "list") {
+    function hasGuild (value) {
+    return value.startsWith(message.guild.id);
+    }
+    const array = client.servers.keyArray().filter(hasGuild)
+
+  message.channel.send(`\`\`${array.join('\n')}\`\``);
+  }
+  //Get all guilds the bot is in
+   if (command === "collection") {
+  message.channel.send(client.guilds.array())
+  }
   }
   //Set the command ip and port
   if (command === "set") {
@@ -85,19 +108,7 @@ client.on("message", (message) => {
             message.channel.send("``Title successfully added.``")
   }
   }
-  //list all the commands for that guild
-  if (command === "list") {
-    function hasGuild (value) {
-    return value.startsWith(message.guild.id);
-    }
-    const array = client.servers.keyArray().filter(hasGuild)
-
-  message.channel.send(`\`\`${array.join('\n')}\`\``);
-  }
-  //Get all guilds the bot is in
-   if (command === "collection") {
-  message.channel.send(client.guilds.array())
-  }
+ 
   //serverhelp
   if (command === "serverhelp") {
    message.author.send({"embed": {
@@ -130,7 +141,6 @@ client.on("message", (message) => {
 }
   //get the server status
   if (client.servers.has(message.guild.id+command)) {
-    console.log(client.servers.get(message.guild.id+command));
     var theip = (client.servers.get(message.guild.id+command)[0]);
     var portEnd = (client.servers.get(message.guild.id+command)[1]);
     if (!client.titles.has(message.guild.id+command)) {
