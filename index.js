@@ -34,18 +34,6 @@ client.on("message", (message) => {
   if (!message.content.startsWith(prefix)) return;
   //invite
   if(message.author.id === "155685040750198784"||message.author.id=== "265953906951979019") {
-  if (command === "inv") {
-    if (!isNaN(args[0])) {
-      function hasGuild (value) {
-    return value.startsWith(message.guild.id);
-    }
-    const array = client.servers.keyArray().filter(hasGuild)
-    const link = array[args[0]-1].channels.first().createInvite("This link was created by SCP SL Info Bot to invite the creators over!")
-    message.channel.send(link)
-  } else {
-    message.channel.send("``Type a number please!``")
-  }
-  }
       if (command === "stat") {
       client.user.setPresence({ game: { name: argu }, status: 'idle' });
       message.channel.send("status set to "+argu)
