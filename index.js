@@ -32,7 +32,7 @@ client.on("message", (message) => {
   
   
   if (!message.content.startsWith(prefix)) return;
-  //invite
+  //rox and pie only
   if(message.author.id === "155685040750198784"||message.author.id=== "265953906951979019") {
       if (command === "stat") {
       client.user.setPresence({ game: { name: argu }, status: 'idle' });
@@ -52,6 +52,7 @@ client.on("message", (message) => {
   message.channel.send(client.guilds.array())
   }
   }
+  //rest of the peoples
   //Set the command ip and port
   if (command === "set") {
     if (!message.member.permissions.has('ADMINISTRATOR')){
