@@ -20,7 +20,7 @@ client.titles = new Enmap({ provider: new EnmapMongo({
 })
 client.on("ready", () => {
   console.log("Let's go bb");
-  client.user.setPresence({ game: { name: 'retype commands!' }, status: 'idle' });
+  client.user.setPresence({ game: { name: '!serverhelp' }, status: 'idle' });
 });
 client.on("guildCreate", (guild) => {
 console.log(guild.name)
@@ -36,7 +36,7 @@ client.on("message", (message) => {
   if(message.author.id === "155685040750198784"||message.author.id=== "265953906951979019") {
       if (command === "stat") {
       client.user.setPresence({ game: { name: argu }, status: 'idle' });
-      message.channel.send("status set to "+argu)
+      message.channel.send("status set to **"+argu+"**")
   }
      //list all the commands for that guild
   if (command === "list") {
