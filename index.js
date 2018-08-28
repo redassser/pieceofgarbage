@@ -61,6 +61,7 @@ client.on("message", (message) => {
     if (args.length != 3) {
     message.channel.send("``!set [commandname] [ip] [port]``");
       return; }
+    console.log(client.servers.has(message.guild.id+command))
     if (client.servers.has(message.guild.id+command)) {
         if (client.servers.get(message.guild.id+command)[0] === args[1]) {
             if (client.servers.get(message.guild.id+command)[1] === args[2]) {
