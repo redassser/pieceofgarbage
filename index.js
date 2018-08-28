@@ -61,9 +61,9 @@ client.on("message", (message) => {
     if (!args[2]) {
     message.channel.send("``!set [commandname] [ip] [port]``");
       return; }
-    if (client.servers.has(guild.id+command)) {
-        if (client.servers.get(guild.id+command)[0] === args[1]) {
-            if (client.servers.get(guild.id+command)[1] === args[2]) {
+    if (client.servers.has(message.guild.id+command)) {
+        if (client.servers.get(message.guild.id+command)[0] === args[1]) {
+            if (client.servers.get(message.guild.id+command)[1] === args[2]) {
                 client.servers.set(message.guild.id+args.shift(), args);
                 message.channel.send("``IP and port successfully changed.``");
             } 
@@ -72,7 +72,7 @@ client.on("message", (message) => {
                 message.channel.send("``IP successfully changed.``");
             }
         }  
-        if (client.server.get(guild.id+command)[1] === args[2]) {
+        if (client.server.get(message.guild.id+command)[1] === args[2]) {
             client.servers.set(message.guild.id+args.shift(), args);
             message.channel.send("``Port successfully changed.``");
         }
