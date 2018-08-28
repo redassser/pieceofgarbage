@@ -72,7 +72,7 @@ client.on("message", (message) => {
                 message.channel.send("``Port successfully changed.``");
             }
         }  
-        if (client.server.get(message.guild.id+args[0])[1] === args[2]) {
+        if (client.servers.get(message.guild.id+args[0])[1] === args[2]) {
             client.servers.set(message.guild.id+args.shift(), args);
             message.channel.send("``IP successfully changed.``");
         }
