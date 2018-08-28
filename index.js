@@ -65,18 +65,21 @@ client.on("message", (message) => {
         if (client.servers.get(guild.id+command)[0] === args[1]) {
             if (client.servers.get(guild.id+command)[1] === args[2]) {
                 client.servers.set(message.guild.id+args.shift(), args);
-                message.channel.send("``IP and port successfully changed.``")
-            } else {
+                message.channel.send("``IP and port successfully changed.``");
+            } 
+            else {
                 client.servers.set(message.guild.id+args.shift(), args);
-                message.channel.send("``IP successfully changed.``")
+                message.channel.send("``IP successfully changed.``");
             }
-        } else if (client.server.get(guild.id+command)[1] === args[2]) {
+        }  
+        if (client.server.get(guild.id+command)[1] === args[2]) {
             client.servers.set(message.guild.id+args.shift(), args);
-            message.channel.send("``Port successfully changed.``")
+            message.channel.send("``Port successfully changed.``");
         }
-    } else {client.servers.set(message.guild.id+args.shift(), args);
-            message.channel.send("``Command successfully added.``")
-  }
+    } else {
+        client.servers.set(message.guild.id+args.shift(), args);
+        message.channel.send("``Command successfully added.``");
+    }
   }
   //delete the command
   if (command === "del") {
