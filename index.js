@@ -58,7 +58,7 @@ client.on("message", (message) => {
     if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (!args.length === 2) {
+    if (!args.size() === 3) {
     message.channel.send("``!set [commandname] [ip] [port]``");
       return; }
     if (client.servers.has(message.guild.id+command)) {
