@@ -137,11 +137,17 @@ client.on("message", (message) => {
         } else {
         var theTitle = (client.titles.get(message.guild.id+command));
   }
-        request(`https://kigen.co/scpsl/getinfo.php?ip=${theip}&port=${portEnd}`, function(err, resp, html) {
+        request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
         if (!err){
-          var $ = cheerio.load(html); 
-                      if (html === '{"error":"Server not found"}') {
-          message.channel.send({"embed": {
+    {
+              var json = JSON.parse(html);
+     if ("error" in json) {
+     console.log("wtf0");
+     } else {
+       var obj = json.find(o => o.ip === theip && o.port === portEnd);
+          if(!obj) {
+            console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called, but it was offline");
+           message.channel.send({"embed": {
     "color": 9245716,
     timestamp: new Date(),
     "title": `${theTitle}`,
@@ -167,16 +173,10 @@ client.on("message", (message) => {
           ],
       }
      }); 
-            } else {
-              var json = JSON.parse(html);
-     
-     if ("error" in json) {
-     console.log("wtf0");
-     } else {
-          var playerCount = json.players;
-     }
-              console.log(`${theTitle}`)
-            message.channel.send({"embed": {
+          } else {
+            var playerCount = obj.players
+            console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called, and it had "+playerCount+" people");
+                      message.channel.send({"embed": {
     "color": 3498293,
     timestamp: new Date(),
     "title": `${theTitle}`,
@@ -202,6 +202,8 @@ client.on("message", (message) => {
           ],
       }
      });  
+          }
+     } 
             }
       }    
 });
