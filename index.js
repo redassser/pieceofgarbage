@@ -65,6 +65,7 @@ client.on("message", (message) => {
     if (client.servers.has(message.guild.id+args[0])) {
         if (client.servers.get(message.guild.id+args[0])[0] === args[1]) {
             if (client.servers.get(message.guild.id+args[0])[1] === args[2]) {
+              
                 message.channel.send("``Exact command already exists.``");
             } 
             else {
@@ -75,6 +76,10 @@ client.on("message", (message) => {
         else if (client.servers.get(message.guild.id+args[0])[1] === args[2]) {
             client.servers.set(message.guild.id+args.shift(), args);
             message.channel.send("``IP successfully changed.``");
+        } 
+        else {
+        client.servers.set(message.guild.id+args.shift(), args);
+            message.channel.send("``IP and port successfully changed.``");
         }
     } else {
         client.servers.set(message.guild.id+args.shift(), args);
