@@ -61,18 +61,18 @@ client.on("message", (message) => {
     if (args.length != 3) {
     message.channel.send("``!set [commandname] [ip] [port]``");
       return; }
-    console.log(client.servers.has(message.guild.id+command))
-    if (client.servers.has(message.guild.id+command)) {
-        if (client.servers.get(message.guild.id+command)[0] === args[1]) {
-            if (client.servers.get(message.guild.id+command)[1] === args[2]) {
+    console.log(client.servers.has(message.guild.id+args[0]))
+    if (client.servers.has(message.guild.id+args[0])) {
+        if (client.servers.get(message.guild.id+args[0])[0] === args[1]) {
+            if (client.servers.get(message.guild.id+args[0])[1] === args[2]) {
                 message.channel.send("``Exact command already exists.``");
             } 
             else {
-                client.servers.set(message.guild.id+args.shift(), args);
+                client.servers.set(message.guild.id+args.shift(), args.join(" "));
                 message.channel.send("``Port successfully changed.``");
             }
         }  
-        if (client.server.get(message.guild.id+command)[1] === args[2]) {
+        if (client.server.get(message.guild.id+args[0])[1] === args[2]) {
             client.servers.set(message.guild.id+args.shift(), args);
             message.channel.send("``IP successfully changed.``");
         }
