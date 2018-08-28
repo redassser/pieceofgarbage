@@ -58,23 +58,22 @@ client.on("message", (message) => {
     if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (!args[2]) {
+    if (!args.length === 2) {
     message.channel.send("``!set [commandname] [ip] [port]``");
       return; }
     if (client.servers.has(message.guild.id+command)) {
         if (client.servers.get(message.guild.id+command)[0] === args[1]) {
             if (client.servers.get(message.guild.id+command)[1] === args[2]) {
-                client.servers.set(message.guild.id+args.shift(), args);
-                message.channel.send("``IP and port successfully changed.``");
+                message.channel.send("``Exact command already exists.``");
             } 
             else {
                 client.servers.set(message.guild.id+args.shift(), args);
-                message.channel.send("``IP successfully changed.``");
+                message.channel.send("``Port successfully changed.``");
             }
         }  
         if (client.server.get(message.guild.id+command)[1] === args[2]) {
             client.servers.set(message.guild.id+args.shift(), args);
-            message.channel.send("``Port successfully changed.``");
+            message.channel.send("``IP successfully changed.``");
         }
     } else {
         client.servers.set(message.guild.id+args.shift(), args);
