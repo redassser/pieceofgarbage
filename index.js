@@ -69,7 +69,7 @@ client.on("message", (message) => {
                 message.channel.send("``Exact command already exists.``");
             } 
             else {
-                client.servers.set(message.guild.id+args.shift(), args.join(" "));
+                client.servers.set(message.guild.id+args.shift(), args);
                 message.channel.send("``Port successfully changed.``");
             }
         }  
