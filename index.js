@@ -112,7 +112,7 @@ client.on("message", (message) => {
     message.channel.send("``!title [commandname] [title]``");
       return; }
       else {
-        if (client.servers.has(message.guild.id+args[0]) {
+        if (client.servers.has(message.guild.id+args[0])) {
         client.titles.set(message.guild.id+args.shift(), args);
             message.channel.send("``Title successfully added.``")
       } else
