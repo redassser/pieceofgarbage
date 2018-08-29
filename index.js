@@ -157,8 +157,9 @@ client.on("message", (message) => {
         var theTitle = "Server";
         } else {
         var theTitle = (client.titles.get(message.guild.id+command));
-  }
-        request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
+        }
+    if (!isNaN(theip.replace(".",""))) {
+               request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
         if (!err){
     {
               var json = JSON.parse(html);
@@ -228,6 +229,76 @@ client.on("message", (message) => {
             }
       }    
 });
+    } else {
+     request(`https://kigen.co/scpsl/getinfo.php?ip=${theip}&port=${portEnd}`, function(err, resp, html) {
+        if (!err){
+          var $ = cheerio.load(html); 
+                      if (html === '{"error":"Server not found"}') {
+          message.channel.send({"embed": {
+    "color": 9245716,
+    timestamp: new Date(),
+    "title": `${theTitle}`,
+     "author": {
+      "name": "SCP Secret Laboratory [OFFLINE]",
+      "icon_url": "http://scp-sl.wdfiles.com/local--files/nav:side/scp-sl-logo.png"
+     },
+        fields: [{
+          name: "IP:",
+          value: `${theip}`,
+          inline: true
+        },
+        {
+          name: "PORT:",
+          value: `${portEnd}`,
+          inline: true
+        },
+        {
+          name: "PLAYERS:",
+          value: 'N/A',
+          inline: true
+        }
+          ],
+      }
+     }); 
+            } else {
+              var json = JSON.parse(html);
+     
+     if ("error" in json) {
+     console.log("wtf0");
+     } else {
+          var playerCount = json.players;
+          
+     }
+            message.channel.send({"embed": {
+    "color": 3498293,
+    timestamp: new Date(),
+    "title": `${theTitle}`,
+     "author": {
+      "name": "SCP Secret Laboratory",
+      "icon_url": "http://scp-sl.wdfiles.com/local--files/nav:side/scp-sl-logo.png"
+     },
+        fields: [{
+          name: "IP:",
+          value: `${theip}`,
+          inline: true
+        },
+        {
+          name: "PORT:",
+          value: `${portEnd}`,
+          inline: true
+        },
+        {
+          name: "PLAYERS:",
+          value: `${playerCount}`,
+          inline: true
+        }
+          ],
+      }
+     });  
+            }
+      }    
+ });
+    }
   }
   });
 client.login(process.env.BOT_TOKEN);
