@@ -38,21 +38,7 @@ client.on("message", (message) => {
       client.user.setPresence({ game: { name: argu }, status: 'idle' });
       message.channel.send("status set to **"+argu+"**")
   }
-     //list all the commands for that guild
-  if (command === "list") {
-    function hasGuild (value) {
-    return value.startsWith(message.guild.id);
-    }
-    const array = client.servers.keyArray().filter(hasGuild)
-if (array.length != 0) {
-  for (var i = 0; i < array.length; i++) {
-    array[i] = array[i].split(message.guild.id).join("");
-  }
-  message.channel.send(message.guild.id+" has\n``"+array.join('\n')+"``");
-} else {
-  message.channel.send("``No commands have been made. Use !set to add some!``")
-}
-  }
+ 
   //Get all guilds the bot is in
    if (command === "collection") {
   message.channel.send(client.guilds.array())
@@ -126,7 +112,21 @@ if (array.length != 0) {
       }
   }
   }
- 
+     //list all the commands for that guild
+  if (command === "list") {
+    function hasGuild (value) {
+    return value.startsWith(message.guild.id);
+    }
+    const array = client.servers.keyArray().filter(hasGuild)
+if (array.length != 0) {
+  for (var i = 0; i < array.length; i++) {
+    array[i] = array[i].split(message.guild.id).join("");
+  }
+  message.channel.send(message.guild.name+" has\n``"+array.join('\n')+"``");
+} else {
+  message.channel.send("``No commands have been made. Use !set to add some!``")
+}
+  }
   //serverhelp
   if (command === "serverhelp") {
    message.author.send({"embed": {
@@ -148,6 +148,11 @@ if (array.length != 0) {
         {
           name: '**!title [commandname] [title]**',
           value: "Sets the title for the servers info card. For EX. \`\`!title ss1 Server 1\`\` would make the title of the info card be \`\`Server 1\`\`." 
+        },
+        {
+          name: '**!list**',
+          value: "Lists all commands available in the current server."
+
         },
         {
           name: '***Notes***',
