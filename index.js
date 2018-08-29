@@ -45,7 +45,7 @@ client.on("message", (message) => {
     }
     const array = client.servers.keyArray().filter(hasGuild)
 if (array.length != 0) {
-  for (var i = 0; i < find.length; i++) {
+  for (var i = 0; i < array.length; i++) {
     array[i] = array[i].split(message.guild.id).join("");
   }
   message.channel.send("``"+array.join('\n')+"``");
