@@ -90,7 +90,7 @@ client.on("message", (message) => {
   if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (!args[0]) {
+    if (args.length != 1) {
     message.channel.send("``!del [commandname]``");
       return; }
       else {
@@ -108,13 +108,16 @@ client.on("message", (message) => {
   if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (!args[1]) {
+    if (args.length != 2) {
     message.channel.send("``!title [commandname] [title]``");
       return; }
       else {
-        
-        client.titles.set(message.guild.id+args.shift(), args.join(" "));
+        if (client.servers.has(message.guild.id+args[0]) {
+        client.titles.set(message.guild.id+args.shift(), args);
             message.channel.send("``Title successfully added.``")
+      } else
+        message.channel.send("``That commandname doesn't exist.``")
+      }
   }
   }
  
@@ -157,10 +160,6 @@ client.on("message", (message) => {
         } else {
         var theTitle = (client.titles.get(message.guild.id+command));
         }
-    console.log(!isNaN(theip.split(".").join("")))
-    console.log(!isNaN(theip))
-    console.log(theip.split(".").join(""))
-    console.log(theip)
     if (!isNaN(theip.split(".").join(""))) {
                request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
         if (!err){
