@@ -44,8 +44,14 @@ client.on("message", (message) => {
     return value.startsWith(message.guild.id);
     }
     const array = client.servers.keyArray().filter(hasGuild)
-
-  message.channel.send(`\`\`${array.join('\n')}\`\``);
+if (array.length != 0) {
+  for (var i = 0; i < find.length; i++) {
+    array[i] = array[i].split(message.guild.id).join("");
+  }
+  message.channel.send("``"+array.join('\n')+"``");
+} else {
+  message.channel.send("``No command have been made.``")
+}
   }
   //Get all guilds the bot is in
    if (command === "collection") {
