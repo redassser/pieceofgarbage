@@ -48,9 +48,9 @@ if (array.length != 0) {
   for (var i = 0; i < array.length; i++) {
     array[i] = array[i].split(message.guild.id).join("");
   }
-  message.channel.send("``"+array.join('\n')+"``");
+  message.channel.send(message.guild.id+" has\n``"+array.join('\n')+"``");
 } else {
-  message.channel.send("``No command have been made.``")
+  message.channel.send("``No commands have been made. Use !set to add some!``")
 }
   }
   //Get all guilds the bot is in
