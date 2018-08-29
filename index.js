@@ -115,7 +115,7 @@ client.on("message", (message) => {
         if (client.servers.has(message.guild.id+args[0])) {
         client.titles.set(message.guild.id+args.shift(), args);
             message.channel.send("``Title successfully added.``")
-      } else
+      } else {
         message.channel.send("``That commandname doesn't exist.``")
       }
   }
