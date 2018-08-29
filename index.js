@@ -61,7 +61,6 @@ client.on("message", (message) => {
     if (args.length != 3) {
     message.channel.send("``!set [commandname] [ip] [port]``");
       return; }
-    console.log(client.servers.has(message.guild.id+args[0]))
     if (client.servers.has(message.guild.id+args[0])) {
         if (client.servers.get(message.guild.id+args[0])[0] === args[1]) {
             if (client.servers.get(message.guild.id+args[0])[1] === args[2]) {
@@ -168,7 +167,7 @@ client.on("message", (message) => {
      } else {
        var obj = json.find(o => o.ip === theip && o.port === portEnd);
           if(!obj) {
-            console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called, but it was offline");
+            console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called in "+message.guild.name+", but it was offline");
            message.channel.send({"embed": {
     "color": 9245716,
     timestamp: new Date(),
@@ -197,7 +196,7 @@ client.on("message", (message) => {
      }); 
           } else {
             var playerCount = obj.players
-            console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called, and it had "+playerCount+" people");
+            console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called in "+message.guild.name+", and it had "+playerCount+" people");
                       message.channel.send({"embed": {
     "color": 3498293,
     timestamp: new Date(),
@@ -234,6 +233,7 @@ client.on("message", (message) => {
         if (!err){
           var $ = cheerio.load(html); 
                       if (html === '{"error":"Server not found"}') {
+     console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called differently in "+message.guild.name+", but it was offline");
           message.channel.send({"embed": {
     "color": 9245716,
     timestamp: new Date(),
@@ -269,6 +269,7 @@ client.on("message", (message) => {
           var playerCount = json.players;
           
      }
+               console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called differently in "+message.guild.name+", and it had "+playerCount+" people");
             message.channel.send({"embed": {
     "color": 3498293,
     timestamp: new Date(),
