@@ -157,11 +157,11 @@ client.on("message", (message) => {
         } else {
         var theTitle = (client.titles.get(message.guild.id+command));
         }
-    console.log(!isNaN(theip.replace(".","")))
+    console.log(!isNaN(theip.split(".").join("")))
     console.log(!isNaN(theip))
-    console.log(theip.replace(".",""))
+    console.log(theip.split(".").join(""))
     console.log(theip)
-    if (!isNaN(theip.replace(".",""))) {
+    if (!isNaN(theip.split(".").join(""))) {
                request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
         if (!err){
     {
