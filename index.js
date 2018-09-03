@@ -316,7 +316,19 @@ if (array.length != 0) {
     }
   }
   //More specific 
-   if (command === "specs" && client.servers.has(message.guild.id+args[0])) {
+   if (command === "specs" ) {
+     if (!message.member.permissions.has("MANAGE_MESSAGES")) {
+     message.channel.send('``Moderators only!``');
+     return;
+     }
+     if (args.length != 1){
+     message.channel.send("``!specs [commandname]``");
+       return;
+     }
+     if (!client.servers.has(message.guild.id+args[0])) {
+     message.channel.send('``That commandname doesn\'t exist``');
+      return;
+     }
     var theip = (client.servers.get(message.guild.id+args[0])[0]);
     var portEnd = (client.servers.get(message.guild.id+args[0])[1]);
     if (!client.titles.has(message.guild.id+args[0])) {
