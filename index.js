@@ -403,7 +403,7 @@ if (array.length != 0) {
           inline: true
         },
         {
-          name: "OFFICAL:",
+          name: "OFFICIAL:",
           value: `${official}`,
           inline: true
         }
