@@ -100,12 +100,12 @@ client.on("message", (message) => {
   if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (args.length != 2) {
+    if (args.length >= 2) {
     message.channel.send("``!title [commandname] [title]``");
       return; }
       else {
         if (client.servers.has(message.guild.id+args[0])) {
-        client.titles.set(message.guild.id+args.shift(), args);
+        client.titles.set(message.guild.id+args.shift(), args.join(" "));
             message.channel.send("``Title successfully added.``")
       } else {
         message.channel.send("``That commandname doesn't exist.``")
@@ -319,7 +319,7 @@ if (array.length != 0) {
    if (command === "specs" && client.servers.has(message.guild.id+args[0])) {
     var theip = (client.servers.get(message.guild.id+args[0])[0]);
     var portEnd = (client.servers.get(message.guild.id+args[0])[1]);
-    if (!client.titles.has(message.guild.id+command)) {
+    if (!client.titles.has(message.guild.id+args[0])) {
         var theTitle = "Server";
         } else {
         var theTitle = (client.titles.get(message.guild.id+args[0]));
@@ -358,7 +358,7 @@ if (array.length != 0) {
         fields: [{
           name: "IP:",
           value: `${theip}`,
-          
+          inline: true 
         },
         {
           name: "PORT:",
@@ -373,7 +373,7 @@ if (array.length != 0) {
         {
           name: "SERVERMOD:",
           value: `${smod}`,
-          
+          inline: true
         },
         {
           name: "REGION:",
@@ -388,7 +388,7 @@ if (array.length != 0) {
         {
           name: "PASTEBIN:",
           value: `${bin}`,
-          
+          inline: true
         },
         {
           name: "OFFICAL:",
