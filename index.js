@@ -154,6 +154,11 @@ if (array.length != 0) {
           value: "Lists all commands available in the current server."
 
         },
+                 {
+          name: '**!specs [commandname]**',
+          value: "Some specifics about the server.\n``Server mod version, Region, Version, Pastebin, Official status.``"
+
+        },
         {
           name: '***Notes***',
           value: "If you input the wrong ip or port the bot will show the server as offline. If the port on the server changes it will be shown as offline unless you update the port. To run the setup commands you must have the administrator permission."
@@ -326,7 +331,7 @@ if (array.length != 0) {
        return;
      }
      if (!client.servers.has(message.guild.id+args[0])) {
-     message.channel.send('``That commandname doesn\'t exist``');
+     message.channel.send('``That commandname doesn\'t exist.``');
       return;
      }
     var theip = (client.servers.get(message.guild.id+args[0])[0]);
@@ -340,8 +345,8 @@ if (array.length != 0) {
         if (!err){
           var $ = cheerio.load(html); 
                       if (html === '{"error":"Server not found"}') {
-     console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called specifically in "+message.guild.name+", but it was offline");
-          message.channel.send("This server is offline, so I can\'t get see its specs!"); 
+     console.log(client.servers.get(message.guild.id+args[0])+" " +theTitle+" has been called specifically in "+message.guild.name+", but it was offline");
+          message.channel.send("``This server is offline, so I can\'t get see its specs.``"); 
             } else {
               var json = JSON.parse(html);
      
@@ -358,7 +363,7 @@ if (array.length != 0) {
          var official = "YES";
            }
      }
-               console.log(client.servers.get(message.guild.id+command)+" " +theTitle+" has been called differently in "+message.guild.name+", and it had "+playerCount+" people");
+               console.log(client.servers.get(message.guild.id+args[0])+" " +theTitle+" has been called differently in "+message.guild.name+", and it had "+playerCount+" people");
             message.channel.send({"embed": {
     "color": 3498293,
     timestamp: new Date(),
