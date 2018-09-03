@@ -193,6 +193,7 @@ if (array.length != 0) {
     "title": `${theTitle}`,
      "author": {
       "name": "SCP Secret Laboratory [OFFLINE]",
+      "footer": "!serverhelp",
       "icon_url": "http://scp-sl.wdfiles.com/local--files/nav:side/scp-sl-logo.png"
      },
         fields: [{
@@ -222,6 +223,7 @@ if (array.length != 0) {
     "title": `${theTitle}`,
      "author": {
       "name": "SCP Secret Laboratory",
+      "footer": "!serverhelp",
       "icon_url": "http://scp-sl.wdfiles.com/local--files/nav:side/scp-sl-logo.png"
      },
         fields: [{
