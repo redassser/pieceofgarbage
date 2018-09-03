@@ -100,12 +100,12 @@ client.on("message", (message) => {
   if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (args.length >= 2) {
+    if (args.length != 2) {
     message.channel.send("``!title [commandname] [title]``");
       return; }
       else {
         if (client.servers.has(message.guild.id+args[0])) {
-        client.titles.set(message.guild.id+args.shift(), args.join(" "));
+        client.titles.set(message.guild.id+args.shift(), args);
             message.channel.send("``Title successfully added.``")
       } else {
         message.channel.send("``That commandname doesn't exist.``")
@@ -154,11 +154,6 @@ if (array.length != 0) {
           value: "Lists all commands available in the current server."
 
         },
-                 {
-          name: '**!specs [commandname]**',
-          value: "Some specifics about the server.\n``Server mod version, Region, Version, Pastebin, Official status.``"
-
-        },
         {
           name: '***Notes***',
           value: "If you input the wrong ip or port the bot will show the server as offline. If the port on the server changes it will be shown as offline unless you update the port. To run the setup commands you must have the administrator permission."
@@ -178,6 +173,7 @@ if (array.length != 0) {
         }
     if (!isNaN(theip.split(".").join(""))) {
                request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
+                  console.log(err)
         if (!err){
     {
               var json = JSON.parse(html);
@@ -320,104 +316,5 @@ if (array.length != 0) {
  });
     }
   }
-  //More specific 
-   if (command === "specs" ) {
-     if (!message.member.permissions.has("MANAGE_MESSAGES")) {
-     message.channel.send('``Moderators only!``');
-     return;
-     }
-     if (args.length != 1){
-     message.channel.send("``!specs [commandname]``");
-       return;
-     }
-     if (!client.servers.has(message.guild.id+args[0])) {
-     message.channel.send('``That commandname doesn\'t exist.``');
-      return;
-     }
-    var theip = (client.servers.get(message.guild.id+args[0])[0]);
-    var portEnd = (client.servers.get(message.guild.id+args[0])[1]);
-    if (!client.titles.has(message.guild.id+args[0])) {
-        var theTitle = "Server";
-        } else {
-        var theTitle = (client.titles.get(message.guild.id+args[0]));
-        }
-  request(`https://kigen.co/scpsl/getinfo.php?ip=${theip}&port=${portEnd}`, function(err, resp, html) {
-        if (!err){
-          var $ = cheerio.load(html); 
-                      if (html === '{"error":"Server not found"}') {
-     console.log(client.servers.get(message.guild.id+args[0])+" " +theTitle+" has been called specifically in "+message.guild.name+", but it was offline");
-          message.channel.send("``This server is offline, so I can\'t get see its specs.``"); 
-            } else {
-              var json = JSON.parse(html);
-     
-     if ("error" in json) {
-     console.log("wtf0");
-     } else {
-          var playerCount = json.players;
-          var smod = json.servermod;
-          var country = json.isoCode;
-          var vers = json.version;
-          var bin = json.pastebin;
-       var official = "NO";
-       if (json.officialCode === "2") {
-         var official = "YES";
-           }
-     }
-               console.log(client.servers.get(message.guild.id+args[0])+" " +theTitle+" has been called differently in "+message.guild.name+", and it had "+playerCount+" people");
-            message.channel.send({"embed": {
-    "color": 3498293,
-    timestamp: new Date(),
-    "title": `${theTitle}`,
-     "author": {
-      "name": "SCP Secret Laboratory",
-      "icon_url": "http://scp-sl.wdfiles.com/local--files/nav:side/scp-sl-logo.png"
-     },
-        fields: [{
-          name: "IP:",
-          value: `${theip}`,
-          inline: true 
-        },
-        {
-          name: "PORT:",
-          value: `${portEnd}`,
-          inline: true
-        },
-        {
-          name: "PLAYERS:",
-          value: `${playerCount}`,
-          inline: true
-        },
-        {
-          name: "SERVERMOD:",
-          value: `${smod}`,
-          inline: true
-        },
-        {
-          name: "REGION:",
-          value: `${country}`,
-          inline: true
-        },
-        {
-          name: "VERSION:",
-          value: `${vers}`,
-          inline: true
-        },
-        {
-          name: "PASTEBIN:",
-          value: `${bin}`,
-          inline: true
-        },
-        {
-          name: "OFFICIAL:",
-          value: `${official}`,
-          inline: true
-        }
-          ],
-      }
-     });  
-            }
-      }    
- });
-   }
   });
 client.login(process.env.BOT_TOKEN);
