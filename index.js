@@ -100,7 +100,7 @@ client.on("message", (message) => {
   if (!message.member.permissions.has('ADMINISTRATOR')){
       message.channel.send("``Administrators only!``");
       return; }
-    if (args.length != 2) {
+    if (args.length < 2) {
     message.channel.send("``!title [commandname] [title]``");
       return; }
       else {
