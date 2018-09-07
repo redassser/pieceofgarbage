@@ -173,7 +173,7 @@ if (array.length != 0) {
     if (!client.titles.has(message.guild.id+command)) {
         var theTitle = "Server";
         } else {
-        var theTitle = (client.titles.get(message.guild.id+command).join(" "));
+        var theTitle = (client.titles.get(message.guild.id+command));
         }
     if (!isNaN(theip.split(".").join(""))) {
                request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
