@@ -129,6 +129,7 @@ if (array.length != 0) {
   }
   //serverhelp
   if (command === "serverhelp") {
+   message.channel.send("``You have been sent a direct message.``")
    message.author.send({"embed": {
     "color": 2314137,
     timestamp: new Date(),
@@ -177,7 +178,7 @@ if (array.length != 0) {
         }
     if (!isNaN(theip.split(".").join(""))) {
                request(`https://api.scpslgame.com/lobbylist.php?format=json`, function(err, resp, html) {
-                  console.log(err)
+  
         if (!err){
     {
               var json = JSON.parse(html);
